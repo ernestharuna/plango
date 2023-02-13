@@ -1,14 +1,10 @@
 import Button from "./Button"
 
-const Header = (props) => {
-    const goo = () => {
-        alert('Hello')
-    }
-
+const Header = ({ title, onAdd, xyz }) => {
     return (
         <header className="header ">
-            <h1>{props.title}</h1>
-            <Button  text='Add' foo={goo} className=""/>
+            <h1>{title}</h1>
+            <Button text={xyz ? 'Close' : 'Add'} toggle={onAdd} color={xyz ? 'red' : 'green'} />
         </header>
     )
 }
