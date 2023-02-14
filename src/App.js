@@ -24,31 +24,27 @@ function App() {
     // console.log(data);
     return data
   }
-  
+
   const fetchTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`)
     const data = await res.json()
 
-    // console.log(data);
     return data
   }
 
   const addTask = async (task) => {
-    // const id = Math.floor(Math.random() * 10000) + 1
-    // const newTask = { id, ...task }
-    // setTasks([...tasks, newTask])
-
     const res = await fetch('http://localhost:5000/tasks', {
       method: 'POST', headers: {
         'Content-type': 'application/json'
       }, body: JSON.stringify(task)
     })
 
-    const data = await res.data()
+    const data = await res.json()
 
     setTasks([...tasks, data])
-  }
+  } 
 
+  // Delete Task
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5000/tasks/${id}`, {
       method: 'DELETE'
